@@ -185,14 +185,13 @@ const list2 = [
 	69617, 83450, 18285, 25771, 76669, 13231, 24169, 82383, 84304, 58761, 67595,
 	41596, 98757, 76875, 97581, 71764, 40046, 41164, 76669, 25771, 53096,
 ];
-
+const list1_sorted = list1.sort(compareNumbers);
+const list2_sorted = list2.sort(compareNumbers);
 function compareNumbers(a, b) {
 	return a - b;
 }
 
 function compareLists() {
-	const list1_sorted = list1.sort(compareNumbers);
-	const list2_sorted = list2.sort(compareNumbers);
 	let tally = 0;
 	for (i = 0; i < list1.length; i++) {
 		if (Number(list1_sorted[i]) > Number(list2_sorted[i])) {
@@ -203,5 +202,16 @@ function compareLists() {
 	}
 	return tally;
 }
-
 console.log(compareLists());
+
+function similarity() {
+	let howManyTimes = 0;
+	let similarityScore = 0;
+	for (i = 0; i < list2.length; i++) {
+		howManyTimes = list2.filter((number) => number === list1[i]).length;
+		NumberScore = Number(howManyTimes) * Number(list1[i]);
+		similarityScore += NumberScore;
+	}
+	return similarityScore;
+}
+console.log(similarity());
